@@ -637,6 +637,10 @@ function wrapSchemaWithAliasResolver(schema: GraphQLSchema): GraphQLSchema {
       Object.keys(fields).forEach(fieldName => {
         const field = fields[fieldName];
         field.resolve = defaultFieldResolverWithAliasSupport;
+        field.subscribe  = (source, args, contextValue, info)=>{
+          console.log(source, args, contextValue, info)
+          debugger;
+        }
       });
     }
   });
